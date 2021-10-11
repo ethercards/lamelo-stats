@@ -119,7 +119,7 @@ export class LameloStats extends BaseContract {
     getHomeOrAway(
       _id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[string]>;
+    ): Promise<[boolean]>;
 
     getStats(_id: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
 
@@ -134,7 +134,7 @@ export class LameloStats extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  getHomeOrAway(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  getHomeOrAway(_id: BigNumberish, overrides?: CallOverrides): Promise<boolean>;
 
   getStats(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -152,7 +152,7 @@ export class LameloStats extends BaseContract {
     getHomeOrAway(
       _id: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<string>;
+    ): Promise<boolean>;
 
     getStats(_id: BigNumberish, overrides?: CallOverrides): Promise<string>;
 

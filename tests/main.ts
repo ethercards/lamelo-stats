@@ -45,27 +45,28 @@ describe("Lamelo - Stats", function () {
 
         it("test", async function () {
 
-            const HomeOrAway = 'away'.split('').map(function (c) { return c.charCodeAt (0); })
+            // const HomeOrAway = 'away'.split('').map(function (c) { return c.charCodeAt (0); })
             const dataPoints = [
-                { id: "HomeOrAway",             type: "bytes4", value: HomeOrAway },
-                { id: "IsGameOver",             type: "bool",   value: false },
+                // HomeOrAway
+                { id: "Home",                   type: "bool",   value: true },
+                { id: "IsGameOver",             type: "bool",   value: true },
                 { id: "GlobalGameID",           type: "uint32", value: 4294967295 },
-                { id: "FieldGoalsMade",         type: "uint16", value: 1 },
-                { id: "FieldGoalsAttempted",    type: "uint16", value: 2 },
-                { id: "TwoPointersMade",        type: "uint16", value: 3 },
-                { id: "TwoPointersAttempted",   type: "uint16", value: 4 },
-                { id: "ThreePointersMade",      type: "uint16", value: 5 },
-                { id: "ThreePointersAttempted", type: "uint16", value: 6 },
-                { id: "FreeThrowsMade",         type: "uint16", value: 7 },
-                { id: "FreeThrowsAttempted",    type: "uint16", value: 8 },
-                { id: "OffensiveRebounds",      type: "uint16", value: 9 },
-                { id: "DefensiveRebounds",      type: "uint16", value: 10 },
-                { id: "Rebounds",               type: "uint16", value: 11 },
-                { id: "Assists",                type: "uint16", value: 12 },
-                { id: "Steals",                 type: "uint16", value: 13 },
-                { id: "BlockedShots",           type: "uint16", value: 14 },
-                { id: "DoubleDoubles",          type: "uint16", value: 15 },
-                { id: "TripleDoubles",          type: "uint16", value: 16 },
+                { id: "FieldGoalsMade",         type: "uint8", value: 1 },
+                { id: "FieldGoalsAttempted",    type: "uint8", value: 2 },
+                { id: "TwoPointersMade",        type: "uint8", value: 3 },
+                { id: "TwoPointersAttempted",   type: "uint8", value: 4 },
+                { id: "ThreePointersMade",      type: "uint8", value: 5 },
+                { id: "ThreePointersAttempted", type: "uint8", value: 6 },
+                { id: "FreeThrowsMade",         type: "uint8", value: 7 },
+                { id: "FreeThrowsAttempted",    type: "uint8", value: 8 },
+                { id: "OffensiveRebounds",      type: "uint8", value: 9 },
+                { id: "DefensiveRebounds",      type: "uint8", value: 10 },
+                { id: "Rebounds",               type: "uint8", value: 11 },
+                { id: "Assists",                type: "uint8", value: 12 },
+                { id: "Steals",                 type: "uint8", value: 13 },
+                { id: "BlockedShots",           type: "uint8", value: 14 },
+                { id: "DoubleDoubles",          type: "uint8", value: 15 },
+                { id: "TripleDoubles",          type: "uint8", value: 16 },
                 { id: "Points",                 type: "uint16", value: 17 },
 
             ]
@@ -80,7 +81,9 @@ describe("Lamelo - Stats", function () {
 
             const result = ethers.utils.solidityPack(dataTypes, dataValues);
             let tx = await LameloStats.fulfill("0x1234567890123456789012345678901234567890012345678901234567890123", result);
-            tx.wait();
+            let receipt = await tx.wait();
+            console.log("gasCost", receipt.cumulativeGasUsed.toString());
+
 
             let stats = await LameloStats.getStats(1);
             console.log("stats", stats);
