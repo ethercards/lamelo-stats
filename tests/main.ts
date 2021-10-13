@@ -48,7 +48,7 @@ describe("Lamelo - Stats", function () {
             // const HomeOrAway = 'away'.split('').map(function (c) { return c.charCodeAt (0); })
             const dataPoints = [
 
-                // custom computed
+                // Unixtimestamp converted from DateTime ( non js version please as that uses milliseconds )
                 { id: "Timestamp",              type: "uint32", value: 4294967295 },
                 // HomeOrAway -> if value == "home" => true / else false
                 { id: "Home",                   type: "bool",   value: true },
