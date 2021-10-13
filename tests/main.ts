@@ -47,10 +47,15 @@ describe("Lamelo - Stats", function () {
 
             // const HomeOrAway = 'away'.split('').map(function (c) { return c.charCodeAt (0); })
             const dataPoints = [
-                // HomeOrAway
+
+                // custom computed
+                { id: "Timestamp",              type: "uint32", value: 4294967295 },
+                // HomeOrAway -> if value == "home" => true / else false
                 { id: "Home",                   type: "bool",   value: true },
-                { id: "IsGameOver",             type: "bool",   value: true },
-                { id: "GlobalGameID",           type: "uint32", value: 4294967295 },
+
+                { id: "Season",                 type: "uint8", value: 1 },
+                { id: "IsGameOver",             type: "bool",  value: true },
+                { id: "GlobalGameID",           type: "uint32",value: 4294967295 },
                 { id: "FieldGoalsMade",         type: "uint8", value: 1 },
                 { id: "FieldGoalsAttempted",    type: "uint8", value: 2 },
                 { id: "TwoPointersMade",        type: "uint8", value: 3 },
